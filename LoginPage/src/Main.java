@@ -9,7 +9,6 @@ public class Main
 
 		
 		LoginPage loginPage = new LoginPage(idandPasswords.getLoginInfo());
-		
-		System.out.println("Hello");
+
 	}
 }
