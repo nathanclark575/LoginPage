@@ -4,6 +4,7 @@ public class IdandPasswords
 {
 	HashMap<String, String> loginInfo = new HashMap<String, String>();
 	
+	// make it so they are updated on a file.
 	IdandPasswords()
 	{
 		loginInfo.put("Grace", "Grace");
@@ -15,5 +16,11 @@ public class IdandPasswords
 	protected HashMap<String, String> getLoginInfo()
 	{
 		return loginInfo;
+	}
+	
+	// Add login info
+	void addUser(String userID, String userPassword)
+	{
+		loginInfo.put(userID, userPassword);
 	}
 }
