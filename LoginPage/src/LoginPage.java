@@ -24,6 +24,9 @@ public class LoginPage implements ActionListener
 	JLabel messageLabel = new JLabel("This is a test");
 	
 	
+	// sign up button
+	JButton signUpButton = new JButton("Sign up");
+	
 	HashMap<String, String> loginInfo =  new HashMap<String, String>();
 	
 	LoginPage(HashMap<String, String> loginInfoOriginal)
@@ -53,6 +56,12 @@ public class LoginPage implements ActionListener
 		frame.add(userPasswordField);
 		frame.add(loginButton);
 		frame.add(resetButton);
+		
+		// add sign up button, with actionlisterner
+		signUpButton.setBounds(50, 200, 75 ,25);
+		signUpButton.addActionListener(this);
+		signUpButton.setFocusable(false);
+		frame.add(signUpButton);
 		
 		frame.setTitle("Login Page");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,5 +108,12 @@ public class LoginPage implements ActionListener
 				messageLabel.setText("Username Not Found");
 			}
 		}
+		// goto sign up page
+		if (e.getSource()==signUpButton)
+		{
+			frame.dispose();
+			SignUpPage signUpPage = new SignUpPage();
+		}
 	}
+	
 }
