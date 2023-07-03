@@ -1,12 +1,17 @@
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class WelcomePage
+public class WelcomePage implements ActionListener
 {
 	JFrame frame = new JFrame();
 	JLabel welcomeLabel = new JLabel("Hello!");
+	
+	JButton logoutButton = new JButton("Logout");
 	
 	WelcomePage(String userID)
 	{
@@ -17,6 +22,12 @@ public class WelcomePage
 		
 		frame.add(welcomeLabel);
 		
+		// Add a logout button, that takes you back to login page
+		logoutButton.setBounds(50, 200, 75 ,25);
+		logoutButton.addActionListener(this);
+		logoutButton.setFocusable(false);
+		frame.add(logoutButton);
+		
 		frame.setTitle("Welcome Page");
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,5 +35,18 @@ public class WelcomePage
 		frame.setLayout(null);
 		frame.setVisible(true);
 		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		// if logout selected, close the welcome page and reopen a new login page
+		if (e.getSource()==logoutButton)
+		{
+			frame.dispose();
+			
+			IdandPasswords idandPasswords = new IdandPasswords();
+			LoginPage loginPage = new LoginPage(idandPasswords.getLoginInfo());
+		}
 	}
 }
