@@ -81,7 +81,9 @@ public class SignUpPage implements ActionListener
 			String userID = userIDField.getText();
 			String userPassword = String.valueOf(userPasswordField.getPassword());
 			
-			idandPasswords.addUser(userID, userPassword);
+			//idandPasswords.addUser(userID, userPassword);
+			
+			idandPasswords.addToFile(userID, userPassword);
 			
 			System.out.println("Done");
 			
@@ -93,7 +95,7 @@ public class SignUpPage implements ActionListener
 		{
 			frame.dispose();
 			IdandPasswords idandPasswords = new IdandPasswords();
-			LoginPage loginPage = new LoginPage(idandPasswords.getLoginInfo());
+			LoginPage loginPage = new LoginPage();
 		}
 	}
 

@@ -44,9 +44,8 @@ public class WelcomePage implements ActionListener
 		if (e.getSource()==logoutButton)
 		{
 			frame.dispose();
-			
-			IdandPasswords idandPasswords = new IdandPasswords();
-			LoginPage loginPage = new LoginPage(idandPasswords.getLoginInfo());
+		
+			LoginPage loginPage = new LoginPage();
 		}
 	}
 }

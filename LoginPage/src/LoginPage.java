@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 
 import javax.swing.JButton;
@@ -12,6 +13,8 @@ import javax.swing.JTextField;
 
 public class LoginPage implements ActionListener
 {
+	IdandPasswords idandPasswords = new IdandPasswords();
+	
 	JFrame frame = new JFrame();
 	
 	JButton loginButton = new JButton("Login");
@@ -29,9 +32,10 @@ public class LoginPage implements ActionListener
 	
 	HashMap<String, String> loginInfo =  new HashMap<String, String>();
 	
-	LoginPage(HashMap<String, String> loginInfoOriginal)
+	//LoginPage(HashMap<String, String> loginInfoOriginal)
+	LoginPage()
 	{
-		loginInfo = loginInfoOriginal;
+		//loginInfo = loginInfoOriginal;
 		
 		userIDLabel.setBounds(50, 100, 75, 25);
 		userPasswordLabel.setBounds(50, 150, 75, 25);
@@ -87,28 +91,54 @@ public class LoginPage implements ActionListener
 			// look into this
 			String password = String.valueOf(userPasswordField.getPassword());
 			
-			// verify
-			if (loginInfo.containsKey(userID))
+			boolean resualt = false;
+			
+			// Check combo, using the file methods
+			try 
 			{
-				if (loginInfo.get(userID).equals(password))
-				{
-					messageLabel.setForeground(Color.green);
-					messageLabel.setText("login Succsessful");
-					frame.dispose();
-					WelcomePage welcomePage = new WelcomePage(userID);
-				}
-				else
-				{
-					messageLabel.setForeground(Color.red);
-					messageLabel.setText("Wrong Password");
-				}
+				resualt = idandPasswords.check(userID, password);
+			} 
+			catch (FileNotFoundException e1) 
+			{
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 			
+			if (resualt == true)
+			{
+				messageLabel.setForeground(Color.green);
+				messageLabel.setText("Login Successful");
+				WelcomePage welcomePage = new WelcomePage(userID);
+			}
 			else
 			{
 				messageLabel.setForeground(Color.red);
-				messageLabel.setText("Username Not Found");
+				messageLabel.setText("Wrong");
 			}
+			
+
+			// verify
+//			if (loginInfo.containsKey(userID))
+//			{
+//				if (loginInfo.get(userID).equals(password))
+//				{
+//					messageLabel.setForeground(Color.green);
+//					messageLabel.setText("login Succsessful");
+//					frame.dispose();
+//					WelcomePage welcomePage = new WelcomePage(userID);
+//				}
+//				else
+//				{
+//					messageLabel.setForeground(Color.red);
+//					messageLabel.setText("Wrong Password");
+//				}
+//			}
+//			
+//			else
+//			{
+//				messageLabel.setForeground(Color.red);
+//				messageLabel.setText("Username Not Found");
+//			}
 		}
 		// goto sign up page
 		if (e.getSource()==signUpButton)

@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class IdandPasswords
 {
-	HashMap<String, String> loginInfo = new HashMap<String, String>();
+	/*HashMap<String, String> loginInfo = new HashMap<String, String>();
 	
 	// make it so they are updated on a file.
 	IdandPasswords()
@@ -29,7 +29,7 @@ public class IdandPasswords
 	void addUser(String userID, String userPassword)
 	{
 		loginInfo.put(userID, userPassword);
-	}
+	}*/
 	
 	
 	// write a dic entry to file
@@ -93,7 +93,7 @@ public class IdandPasswords
 	}
 		
 	// check userID and password combo
-	public void check(String userID, String password) throws FileNotFoundException
+	public boolean check(String userID, String password) throws FileNotFoundException
 	{
 		File file = new File("text.txt");
 		Scanner scan = new Scanner(file);
@@ -105,13 +105,13 @@ public class IdandPasswords
 			if (userID.equals(parts[0]) && password.equals(parts[1]))
 			{
 				System.out.println("Correct");
-				return;
+				return true;
 			}
 
 		}
 			
 		System.out.println("Incorrect");
-		return;
+		return false;
 	}
 		
 }

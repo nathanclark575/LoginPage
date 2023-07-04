@@ -8,11 +8,13 @@ public class Main
 		
 		IdandPasswords idandPasswords = new IdandPasswords();
 		
-		//idandPasswords.addToFile("Nathan", "123");
-		idandPasswords.check("Nathan", "123");
+		//idandPasswords.addToFile("grace", "123");
+		//idandPasswords.check("Nathan", "123");
 
 		
-		LoginPage loginPage = new LoginPage(idandPasswords.getLoginInfo());
+		//LoginPage loginPage = new LoginPage(idandPasswords.getLoginInfo());
+		
+		LoginPage loginPage = new LoginPage();
 
 	}
 }
