@@ -68,6 +68,8 @@ public class LoginPage implements ActionListener
 		frame.setSize(420, 420);
 		frame.setLayout(null);
 		frame.setVisible(true);
+		
+		System.out.println(loginInfo);
 	}
 	
 	@Override
