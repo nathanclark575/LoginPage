@@ -6,8 +6,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+/* The welcome page, which is now available to the user and offers a logout option */
+
 public class WelcomePage implements ActionListener
 {
+	// setting up the page
 	JFrame frame = new JFrame();
 	JLabel welcomeLabel = new JLabel("Hello!");
 	

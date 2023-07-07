@@ -4,40 +4,16 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
+/* Manages the ID and Passwords for the whole system in a file that can be, written to, read and checked for an ID and Password combo */
+
 public class IdandPasswords
-{
-	/*HashMap<String, String> loginInfo = new HashMap<String, String>();
-	
-	// make it so they are updated on a file.
-	IdandPasswords()
-	{
-		loginInfo.put("Grace", "Grace");
-		loginInfo.put("brometheus", "PASSWORD");
-		loginInfo.put("brocode", "abc123");
-	}
-	
-	// My change to the code is to have <String, String> for the HashMap Type
-	protected HashMap<String, String> getLoginInfo()
-	{
-		return loginInfo;
-	}
-	
-	// Add login info
-	void addUser(String userID, String userPassword)
-	{
-		loginInfo.put(userID, userPassword);
-	}*/
-	
+{	
 	
 	// write a dic entry to file
 	public void addToFile(String userID, String password)
 	{
-		// make a hashmap entry with userID:password
-		//Map.Entry<String, String> entry = new Map.Entry<String, String>();
-		//map.put(userID, password);
 			
 		// open the file and append to it
 		File file = new File("text.txt");
@@ -51,8 +27,6 @@ public class IdandPasswords
 			bf.write(userID + ":" + password);
 			bf.newLine();
 				
-			System.out.println("Done");
-				
 			bf.flush();
 		}
 		catch (IOException e)
@@ -64,7 +38,6 @@ public class IdandPasswords
 			try
 			{
 				bf.close();
-				System.out.println("Done all of it");
 			}
 			catch (Exception e)
 			{
@@ -74,7 +47,7 @@ public class IdandPasswords
 		
 	}
 		
-	// read the file
+	// read the file and print its absoloute path
 	public void readFile() throws FileNotFoundException
 	{
 			
@@ -104,13 +77,10 @@ public class IdandPasswords
 				
 			if (userID.equals(parts[0]) && password.equals(parts[1]))
 			{
-				System.out.println("Correct");
 				return true;
 			}
 
 		}
-			
-		System.out.println("Incorrect");
 		return false;
 	}
 		

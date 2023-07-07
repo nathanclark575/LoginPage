@@ -11,10 +11,13 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+/* The login page for the system. From here a user can login or go to the sign up page. */
+
 public class LoginPage implements ActionListener
 {
 	IdandPasswords idandPasswords = new IdandPasswords();
 	
+	// Setting up of the page, with the button, labels and layout
 	JFrame frame = new JFrame();
 	
 	JButton loginButton = new JButton("Login");
@@ -24,15 +27,16 @@ public class LoginPage implements ActionListener
 	
 	JLabel userIDLabel = new JLabel("userID:");
 	JLabel userPasswordLabel = new JLabel("password:");
-	JLabel messageLabel = new JLabel("This is a test");
+	JLabel messageLabel = new JLabel("Login Page");
+	JLabel loginMessage = new JLabel("");
 	
 	
 	// sign up button
 	JButton signUpButton = new JButton("Sign up");
 	
 	HashMap<String, String> loginInfo =  new HashMap<String, String>();
-	
-	//LoginPage(HashMap<String, String> loginInfoOriginal)
+
+	// set all the bounds, and add all of the features to the frame
 	LoginPage()
 	{
 		//loginInfo = loginInfoOriginal;
@@ -40,8 +44,11 @@ public class LoginPage implements ActionListener
 		userIDLabel.setBounds(50, 100, 75, 25);
 		userPasswordLabel.setBounds(50, 150, 75, 25);
 		
-		messageLabel.setBounds(125, 250, 250, 35);
+		messageLabel.setBounds(150, 50, 250, 35);
 		messageLabel.setFont(new Font(null, Font.ITALIC, 25));
+		
+		loginMessage.setBounds(100, 250, 250, 35);
+		loginMessage.setFont(new Font(null, Font.ITALIC, 10));
 		
 		userIDField.setBounds(125, 100, 200, 25);
 		userPasswordField.setBounds(125, 150, 200, 25);
@@ -56,6 +63,7 @@ public class LoginPage implements ActionListener
 		frame.add(userIDLabel);
 		frame.add(userPasswordLabel);
 		frame.add(messageLabel);
+		frame.add(loginMessage);
 		frame.add(userIDField);
 		frame.add(userPasswordField);
 		frame.add(loginButton);
@@ -73,9 +81,9 @@ public class LoginPage implements ActionListener
 		frame.setLayout(null);
 		frame.setVisible(true);
 		
-		System.out.println(loginInfo);
 	}
 	
+	// Action listerner, checks for when buttons are pressed
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
@@ -88,7 +96,7 @@ public class LoginPage implements ActionListener
 		if (e.getSource()==loginButton)
 		{
 			String userID = userIDField.getText();
-			// look into this
+			// needed to get string version of password field as not just text like userID
 			String password = String.valueOf(userPasswordField.getPassword());
 			
 			boolean resualt = false;
@@ -106,39 +114,16 @@ public class LoginPage implements ActionListener
 			
 			if (resualt == true)
 			{
-				messageLabel.setForeground(Color.green);
-				messageLabel.setText("Login Successful");
+				//loginMessage.setForeground(Color.green);
+				//loginMessage.setText("Login Successful");
 				WelcomePage welcomePage = new WelcomePage(userID);
 			}
 			else
 			{
-				messageLabel.setForeground(Color.red);
-				messageLabel.setText("Wrong");
+				loginMessage.setForeground(Color.red);
+				loginMessage.setText("Incorrect combination of userID and password");
 			}
 			
-
-			// verify
-//			if (loginInfo.containsKey(userID))
-//			{
-//				if (loginInfo.get(userID).equals(password))
-//				{
-//					messageLabel.setForeground(Color.green);
-//					messageLabel.setText("login Succsessful");
-//					frame.dispose();
-//					WelcomePage welcomePage = new WelcomePage(userID);
-//				}
-//				else
-//				{
-//					messageLabel.setForeground(Color.red);
-//					messageLabel.setText("Wrong Password");
-//				}
-//			}
-//			
-//			else
-//			{
-//				messageLabel.setForeground(Color.red);
-//				messageLabel.setText("Username Not Found");
-//			}
 		}
 		// goto sign up page
 		if (e.getSource()==signUpButton)
