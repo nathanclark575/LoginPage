@@ -10,6 +10,9 @@ import javax.swing.JLabel;
 
 public class WelcomePage implements ActionListener
 {
+	// keep track of total spend
+	double total = 0;
+	
 	// setting up the page
 	JFrame frame = new JFrame();
 	JLabel welcomeLabel = new JLabel("Hello!");
@@ -20,6 +23,10 @@ public class WelcomePage implements ActionListener
 	JLabel aLabel = new JLabel("Product A");
 	JButton aAdd = new JButton("Add 1");
 	JButton aRemove = new JButton("Take 1");
+	
+	// Total and checkout
+	JLabel totalLabel = new JLabel("Total = £" + total);
+	JButton checkoutButton = new JButton("Checkout");
 	
 	
 	WelcomePage(String userID)
@@ -52,6 +59,15 @@ public class WelcomePage implements ActionListener
 		aRemove.setFocusable(false);
 		frame.add(aRemove);
 		
+		// total and checkout
+		totalLabel.setBounds(50, 250, 115, 25);
+		frame.add(totalLabel);
+		
+		checkoutButton.setBounds(200, 250, 100, 25);
+		checkoutButton.addActionListener(this);
+		checkoutButton.setFocusable(false);
+		frame.add(checkoutButton);
+		
 		frame.add(aLabel);
 		
 		frame.setTitle("Welcome Page");
@@ -72,6 +88,24 @@ public class WelcomePage implements ActionListener
 			frame.dispose();
 		
 			LoginPage loginPage = new LoginPage();
+		}
+		
+		// change total based on aAdd or aRemove
+		if (e.getSource()==aAdd)
+		{
+			total++;
+			totalLabel.setText("Total = £" + total);
+		}
+		
+		if (e.getSource()==aRemove)
+		{
+			total--;
+			totalLabel.setText("Total = £" + total);
+		}
+		
+		if (e.getSource()==checkoutButton)
+		{
+			Checkout checkout = new Checkout();
 		}
 	}
 }
