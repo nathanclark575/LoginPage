@@ -16,6 +16,12 @@ public class WelcomePage implements ActionListener
 	
 	JButton logoutButton = new JButton("Logout");
 	
+	// Product A
+	JLabel aLabel = new JLabel("Product A");
+	JButton aAdd = new JButton("Add 1");
+	JButton aRemove = new JButton("Take 1");
+	
+	
 	WelcomePage(String userID)
 	{
 		
@@ -26,10 +32,27 @@ public class WelcomePage implements ActionListener
 		frame.add(welcomeLabel);
 		
 		// Add a logout button, that takes you back to login page
-		logoutButton.setBounds(50, 200, 75 ,25);
+		logoutButton.setBounds(150, 350, 75 ,25);
 		logoutButton.addActionListener(this);
 		logoutButton.setFocusable(false);
 		frame.add(logoutButton);
+		
+		// product A
+		aLabel.setBounds(50, 100, 200, 35);
+		aLabel.setFont(new Font(null, Font.PLAIN, 15));
+		aLabel.setText("Product A : £1");
+		
+		aAdd.setBounds(200, 107, 75, 25);
+		aAdd.addActionListener(this);
+		aAdd.setFocusable(false);
+		frame.add(aAdd);
+		
+		aRemove.setBounds(275, 107, 75, 25);
+		aRemove.addActionListener(this);
+		aRemove.setFocusable(false);
+		frame.add(aRemove);
+		
+		frame.add(aLabel);
 		
 		frame.setTitle("Welcome Page");
 		
