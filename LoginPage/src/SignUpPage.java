@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -86,7 +87,27 @@ public class SignUpPage implements ActionListener
 			String userID = userIDField.getText();
 			String userPassword = String.valueOf(userPasswordField.getPassword());
 			
-			//idandPasswords.addUser(userID, userPassword);
+			
+			// check to see if userID exists
+			int resualt = 0;
+			
+			try 
+			{
+				resualt = idandPasswords.check(userID, userPassword);
+			} 
+			catch (FileNotFoundException e1) 
+			{
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			// if user already exits
+			if (resualt != 0)
+			{
+				messageLabel.setForeground(Color.black);
+				messageLabel.setText("userID already exits");
+				return;
+			}
 			
 			idandPasswords.addToFile(userID, userPassword);
 			

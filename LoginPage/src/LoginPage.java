@@ -39,7 +39,6 @@ public class LoginPage implements ActionListener
 	// set all the bounds, and add all of the features to the frame
 	LoginPage()
 	{
-		//loginInfo = loginInfoOriginal;
 		
 		userIDLabel.setBounds(50, 100, 75, 25);
 		userPasswordLabel.setBounds(50, 150, 75, 25);
@@ -99,7 +98,7 @@ public class LoginPage implements ActionListener
 			// needed to get string version of password field as not just text like userID
 			String password = String.valueOf(userPasswordField.getPassword());
 			
-			boolean resualt = false;
+			int resualt = 0;
 			
 			// Check combo, using the file methods
 			try 
@@ -112,7 +111,7 @@ public class LoginPage implements ActionListener
 				e1.printStackTrace();
 			}
 			
-			if (resualt == true)
+			if (resualt == 1)
 			{
 				//loginMessage.setForeground(Color.green);
 				//loginMessage.setText("Login Successful");

@@ -66,7 +66,7 @@ public class IdandPasswords
 	}
 		
 	// check userID and password combo
-	public boolean check(String userID, String password) throws FileNotFoundException
+	public int check(String userID, String password) throws FileNotFoundException
 	{
 		File file = new File("text.txt");
 		Scanner scan = new Scanner(file);
@@ -75,13 +75,21 @@ public class IdandPasswords
 			String data = scan.nextLine();
 			String[] parts = data.split(":");
 				
+			// userID and password match, return 1
 			if (userID.equals(parts[0]) && password.equals(parts[1]))
 			{
-				return true;
+				return 1;
+			}
+			
+			// userID used, but don't match
+			else if (userID.equals(parts[0]))
+			{
+				return -1;
 			}
 
 		}
-		return false;
+		// userID missing
+		return 0;
 	}
 		
 }
